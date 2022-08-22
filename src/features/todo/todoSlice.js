@@ -24,12 +24,19 @@ const todoSlice = createSlice({
       state.push(newTodo)
       // redux takes the new state and saves it to the store
       // any components that rely on the state get updated
-
+    },
+    toggleComplete: (state, action) => {
+      const index = state.findIndex((todo) => todo.id === action.payload.id)
+      state[index].completed = action.payload.completed
+      // Whatever value our component passes as part of the payload
+      // is set to the new completed value.
+      // Redux updates the states. Our selector detects the change
+      //    and re-renders relevant components
     }
   }
 })
 // actions
-export const { addTodo } = todoSlice.actions
+export const { addTodo, toggleComplete } = todoSlice.actions
 
 // reducer
 export default todoSlice.reducer
