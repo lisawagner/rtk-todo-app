@@ -10,6 +10,9 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
+    // 'addTodo' reducer receives the action + the current state of the slice
+    // 'newTodo' is then created based on 'action(payload)' with additional
+    //       properties needed, like 'id' and 'completed'.
     addTodo: (state, action) => {
       const newTodo = {
         // why not use nanoid for id?
@@ -19,6 +22,9 @@ const todoSlice = createSlice({
       }
       // add new todo at the end of the array
       state.push(newTodo)
+      // redux takes the new state and saves it to the store
+      // any components that rely on the state get updated
+
     }
   }
 })
