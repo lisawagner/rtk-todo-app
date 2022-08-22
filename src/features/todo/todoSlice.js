@@ -32,11 +32,15 @@ const todoSlice = createSlice({
       // is set to the new completed value.
       // Redux updates the states. Our selector detects the change
       //    and re-renders relevant components
+    },
+    deleteTodo: (state, action) => {
+      return state.filter((todo) => todo.id !== action.payload.id)
     }
+
   }
 })
 // actions
-export const { addTodo, toggleComplete } = todoSlice.actions
+export const { addTodo, toggleComplete, deleteTodo } = todoSlice.actions
 
 // reducer
 export default todoSlice.reducer
