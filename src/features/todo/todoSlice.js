@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+// Making the API call in the component isn't ideal, since it will be difficult to reuse that code
+// The API call can't be done in the reducer because the reducer is a pure function that creates the new state only
+
+
 const initialState = [
   { id: '0', title: 'todo1', completed: false },
   { id: '1', title: 'todo2', completed: false },
