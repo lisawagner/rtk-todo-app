@@ -15,11 +15,12 @@ A small scale todo app as part of a deep dive into `redux-toolkit`.
 ### :gear: Tech Stack
 
    1. React - Frontend
-   2. Redux Toolkit (RTK) - for writing Redux logic / state management
-   3. Redux Thunk from RTK - async middleware for doing the API calls
-   4. 
-   5. 
-   6. Bootstrap 5
+   2. Bootstrap 5
+   3. Redux Toolkit (RTK) - for writing Redux logic / state management
+   4. Redux Thunk from RTK - async middleware for doing the API calls
+   5. Express - Backend API server framework
+   6. Nodemon - Utility to auto restart express server
+   7. Bootstrap 5
 
 ### `npm test`
 
@@ -37,4 +38,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Resources
 
-    1. [React RTK Tutorial by Chris Blakely](https://www.youtube.com/watch?v=fiesH6WU63I)
+[React RTK Tutorial by Chris Blakely](https://www.youtube.com/watch?v=fiesH6WU63I)
