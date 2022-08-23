@@ -36,11 +36,11 @@ Download ZIP or clone the source code repo to your system. Includes:
 2. Start the API
      - `npm run server` to start locally
 3. Test the API
-     - Verify server is running in the browser:
+     Verify server is running in the browser:
      ```
      http://localhost:7000/todos
      ```
-     - Test with Postman
+     Test with Postman
      GET
      ```
     localhost:7000/todos
@@ -55,9 +55,9 @@ Download ZIP or clone the source code repo to your system. Includes:
       - This API is a mock mode.js/express server for testing purposes
 
 ### Frontend
-Once your server is running, you need to set up the react frontend:
+Once your server is running, you need to set up the React frontend:
 
-1. Set up Frontend
+1. Set up frontend
      - Open another terminal (or split terminal) in VS Code
      - `cd client`
      - `npm i` to install dependencies
