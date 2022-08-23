@@ -34,6 +34,24 @@ export const addNewTodo = createAsyncThunk(
 	}
 );
 
+export const toggleCompleteTodo = createAsyncThunk(
+	'todos/completeTodo',
+	async (payload) => {
+		const resp = await fetch(`${TODO_URL}/${payload.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ completed: payload.completed }),
+		});
+
+		if (resp.ok) {
+			const todo = await resp.json();
+			return { todo };
+		}
+	}
+);
+
 
 const todoSlice = createSlice({
   name: 'todos',
@@ -77,8 +95,13 @@ const todoSlice = createSlice({
         return action.payload.todos;
       })
       .addCase(addNewTodo.fulfilled, (state, action) => {
-        // TODO: add todoSTatus === 'success' logic
         state.push(action.payload.todo)
+      })
+      .addCase(toggleCompleteTodo.fulfilled, (state, action) => {
+        const index = state.findIndex(
+          (todo) => todo.id === action.payload.todo.id
+        );
+        state[index].completed = action.payload.todo.completed;
       })
     // [getTodos.fulfilled]: (state, action) => {
 		// 	return action.payload.todos;
