@@ -10,14 +10,15 @@ const TodoList = () => {
 	useEffect(() => {
 		dispatch(getTodos())
 	}, [dispatch])
-	
 
 	return (
-		<ul className='list-group'>
-			{todos.map((todo) => (
-				<TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} />
-			))}
-		</ul>
+		<>
+			<ul className='list-group'>
+				{todos.map((todo) => (
+					<TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} />
+				))}
+			</ul>
+		</>
 	)
 }
 
