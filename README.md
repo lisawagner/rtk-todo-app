@@ -2,15 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-<p align="center">
+<!-- <p align="center">
   <img src="src/assets/rtk-screen.png" alt="RTK Todo App" width="500">
-</p>
+</p> -->
 
 ## Description
 
 A small scale todo app as part of a deep dive into `redux-toolkit`.
 
-[DEMO](https://redux-toolkit-example-blog.netlify.app/ "RTK Todo App")
+<!-- [DEMO](https://redux-toolkit-example-blog.netlify.app/ "RTK Todo App") -->
 
 ### :gear: Tech Stack
 
