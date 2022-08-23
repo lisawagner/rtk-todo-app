@@ -21,23 +21,6 @@ A small scale todo app as part of a deep dive into `redux-toolkit`.
    5. Express - Backend API server framework
    6. Nodemon - Utility to auto restart express server
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-
-## Resources
-
-[React RTK Tutorial by Chris Blakely](https://www.youtube.com/watch?v=fiesH6WU63I)
 
 ## Usage
 Download ZIP or clone the source code repo to your system. Includes:
@@ -53,11 +36,34 @@ Download ZIP or clone the source code repo to your system. Includes:
 2. Start the API
      - `npm run server` to start locally
 3. Test the API
-     - verify server is running in the browser:
+     - Verify server is running in the browser:
      ```
      http://localhost:7000/todos
      ```
-     - Test with Postman:
+     - Test with Postman
+     GET
+     ```
+    localhost:7000/todos
+     ```
+     POST > body > raw > JSON:
      ```
     { "title" : "this is a new todo." }
      ```
+
+   **NOTES**
+      - API must be running to test if your frontened is working as intended.
+      - This API is a mock mode.js/express server for testing purposes
+
+### Frontend
+Once your server is running, you need to set up the react frontend:
+
+1. Set up Frontend
+     - Open another terminal (or split terminal) in VS Code
+     - `cd client`
+     - `npm i` to install dependencies
+2. Start the client
+     - `npm start` to run on localhost:3000
+
+
+## Resources
+[React RTK Tutorial by Chris Blakely](https://www.youtube.com/watch?v=fiesH6WU63I)
