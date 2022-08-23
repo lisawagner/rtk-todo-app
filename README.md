@@ -15,12 +15,11 @@ A small scale todo app as part of a deep dive into `redux-toolkit`.
 ### :gear: Tech Stack
 
    1. React - Frontend
-   2. Bootstrap 5
+   2. Bootstrap 5 - via cdn
    3. Redux Toolkit (RTK) - for writing Redux logic / state management
    4. Redux Thunk from RTK - async middleware for doing the API calls
    5. Express - Backend API server framework
    6. Nodemon - Utility to auto restart express server
-   7. Bootstrap 5
 
 ### `npm test`
 
@@ -39,3 +38,26 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Resources
 
 [React RTK Tutorial by Chris Blakely](https://www.youtube.com/watch?v=fiesH6WU63I)
+
+## Usage
+Download ZIP or clone the source code repo to your system. Includes:
+   * React frontend - client
+   * API 'backend' - server
+
+### API 'Backend'
+
+1. Set up API
+     - `ctrl-~` to open terminal in VS Code
+     - `cd server`
+     - `npm i` to install dependencies
+2. Start the API
+     - `npm run server` to start locally
+3. Test the API
+     - verify server is running in the browser:
+     ```
+     http://localhost:7000/todos
+     ```
+     - Test with Postman:
+     ```
+    { "title" : "this is a new todo." }
+     ```
