@@ -16,6 +16,24 @@ export const getTodos = createAsyncThunk(
 	}
 )
 
+export const addNewTodo = createAsyncThunk(
+	'todos/addNewTodo',
+	async (payload) => {
+		const response = await fetch(TODO_URL, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ title: payload.title }),
+		});
+
+		if (response.ok) {
+			const todo = await response.json();
+			return { todo };
+		}
+	}
+);
+
 
 const todoSlice = createSlice({
   name: 'todos',
@@ -51,11 +69,16 @@ const todoSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getTodos.pending, (state, action) => {
+        // state.status = 'loading'
         console.log('loading....');
       })
       .addCase(getTodos.fulfilled, (state, action) => {
         // TODO: add todoSTatus === 'success' logic
         return action.payload.todos;
+      })
+      .addCase(addNewTodo.fulfilled, (state, action) => {
+        // TODO: add todoSTatus === 'success' logic
+        state.push(action.payload.todo)
       })
     // [getTodos.fulfilled]: (state, action) => {
 		// 	return action.payload.todos;

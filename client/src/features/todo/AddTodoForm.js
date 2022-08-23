@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addTodo } from './todoSlice'
+// import { addTodo } from './todoSlice'
+import { addNewTodo } from './todoSlice'
 
 const AddTodoForm = () => {
 	const [value, setValue] = useState('')
@@ -12,7 +13,7 @@ const AddTodoForm = () => {
 		console.log('user entered: ' + value)
 		// dispatch(action(payload))
 		dispatch(
-			addTodo({
+			addNewTodo({
 				title: value,
 			})
 		)
