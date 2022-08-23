@@ -1,18 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
 // Making the API call in the component isn't ideal, since it will be difficult to reuse that code
-// The API call can't be done in the reducer because the reducer is a pure function that creates the new state only
+// The API call can't be done in the reducer because the reducer is a pure function that creates the new state only. It's thunk-time
 
+const TODO_URL = 'http://localhost:7000/todos'
 
-const initialState = [
-  { id: '0', title: 'todo1', completed: false },
-  { id: '1', title: 'todo2', completed: false },
-  { id: '2', title: 'todo3', completed: false },
-]
+export const getTodos = createAsyncThunk(
+	'todos/getTodos',
+	async () => {
+		const response = await fetch(TODO_URL);
+		if (response.ok) {
+			const todos = await response.json();
+			return { todos };
+		}
+	}
+)
+
 
 const todoSlice = createSlice({
   name: 'todos',
-  initialState,
+  initialState: [],
   reducers: {
     // 'addTodo' reducer receives the action + the current state of the slice
     // 'newTodo' is then created based on 'action(payload)' with additional
@@ -40,9 +47,34 @@ const todoSlice = createSlice({
     deleteTodo: (state, action) => {
       return state.filter((todo) => todo.id !== action.payload.id)
     }
-
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(getTodos.pending, (state, action) => {
+        console.log('loading....');
+      })
+      .addCase(getTodos.fulfilled, (state, action) => {
+        // TODO: add todoSTatus === 'success' logic
+        return action.payload.todos;
+      })
+    // [getTodos.fulfilled]: (state, action) => {
+		// 	return action.payload.todos;
+		// },
+		// [addTodo.fulfilled]: (state, action) => {
+		// 	state.push(action.payload.todo);
+		// },
+		// [toggleComplete.fulfilled]: (state, action) => {
+		// 	const index = state.findIndex(
+		// 		(todo) => todo.id === action.payload.todo.id
+		// 	);
+		// 	state[index].completed = action.payload.todo.completed;
+		// },
+		// [deleteTodo.fulfilled]: (state, action) => {
+		// 	return state.filter((todo) => todo.id !== action.payload.id);
+		// },   
   }
 })
+
 // actions
 export const { addTodo, toggleComplete, deleteTodo } = todoSlice.actions
 
