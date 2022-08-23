@@ -63,7 +63,7 @@ Once your server is running, you need to set up the React frontend:
 3. Your frontend should initially be populated with the mock server data. It should look similar to this:
 
 <p align="center">
-  <img src="rtk-todo.png" alt="RTK Todo App" width="500">
+  <img src="rtk-todo.png" alt="RTK Todo App" width="700">
 </p>
 
 ## Resources
