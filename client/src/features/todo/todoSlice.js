@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit"
 
 // Making the API call in the component isn't ideal, since it will be difficult to reuse that code
 // The API call can't be done in the reducer because the reducer is a pure function that creates the new state only. It's thunk-time
@@ -75,8 +75,7 @@ const todoSlice = createSlice({
     //       properties needed, like 'id' and 'completed'.
     addTodo: (state, action) => {
       const newTodo = {
-        // why not use nanoid for id?
-        id: Date.now(),
+        id: nanoid(),
         title: action.payload.title,
         completed: false
       }
@@ -100,11 +99,9 @@ const todoSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getTodos.pending, (state, action) => {
-        // state.status = 'loading'
         console.log('loading....');
       })
       .addCase(getTodos.fulfilled, (state, action) => {
-        // TODO: add todoSTatus === 'success' logic
         return action.payload.todos;
       })
       .addCase(addNewTodo.fulfilled, (state, action) => {
@@ -118,22 +115,7 @@ const todoSlice = createSlice({
       })
       .addCase(deleteTodoItem.fulfilled, (state, action) => {
         return state.filter((todo) => todo.id !== action.payload.id);
-      })
-    // [getTodos.fulfilled]: (state, action) => {
-		// 	return action.payload.todos;
-		// },
-		// [addTodo.fulfilled]: (state, action) => {
-		// 	state.push(action.payload.todo);
-		// },
-		// [toggleComplete.fulfilled]: (state, action) => {
-		// 	const index = state.findIndex(
-		// 		(todo) => todo.id === action.payload.todo.id
-		// 	);
-		// 	state[index].completed = action.payload.todo.completed;
-		// },
-		// [deleteTodo.fulfilled]: (state, action) => {
-		// 	return state.filter((todo) => todo.id !== action.payload.id);
-		// },   
+      })  
   }
 })
 

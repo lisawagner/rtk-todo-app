@@ -11,7 +11,7 @@ const PORT = 7000;
 
 app.use(cors());
 // app.use(json());
-app.use(express.json()); // used to parse JSON bodies
+app.use(express.json()); // current way to parse JSON bodies
 
 let todos = [
 	{
