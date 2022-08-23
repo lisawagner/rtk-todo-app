@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 // import { toggleComplete, deleteTodo } from "./todoSlice"
 import { toggleCompleteTodo, deleteTodoItem } from "./todoSlice"
+import { openModal } from "../modal/modalSlice"
 
 const TodoItem = ({ id, title, completed }) => {
 	const dispatch = useDispatch()
@@ -27,6 +28,13 @@ const TodoItem = ({ id, title, completed }) => {
 					></input>
 					{title}
 				</span>
+				<button
+					type="button"
+					data-bs-toggle="modal"
+					onClick={() => dispatch(openModal())}
+					className='btn btn-primary'>
+					Edit
+				</button>
 				<button onClick={handleDeleteClick} className='btn btn-danger'>Delete</button>
 			</div>
 		</li>
